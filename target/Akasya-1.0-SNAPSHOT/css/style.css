@@ -15368,12 +15368,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .rd-nav-login {
-	background-color:  #f7f7f7;
+	background-color:  #fcad0c;
 	margin-right: 4px;
 	float: right;
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 400;
-	color: #29293a;
+	color: #ffffff;
 	cursor: pointer;
 	padding-top: 16px;
 	padding-bottom: 16px;
@@ -15386,6 +15386,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 
 .rd-nav-login:hover {
 	border-radius: 5px;
-	color: #ffffff;
-	background-color: #fcad0c;
+	color: #fcad0c;
+	background-color: #29293a;
+}.page-header {
+
 }

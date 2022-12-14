@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : 4 Ara 2022, 14:14:28
+    Document   : register
+    Created on : 14 Ara 2022, 17:12:47
     Author     : sedat
 --%>
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
-    <title>Contacts</title>
+    <title>Kayıt Ol</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,25 +79,48 @@
         <div class="container">
           <div class="row row-50 justify-content-xl-between flex-lg-row-reverse">
           <div class="col-lg-8">
-              <h2>Giriş Yap</h2>
+              <h2>Kayıt Ol:</h2>
               <!-- RD Mailform-->
-              <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="login.jsp">
+              <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="register.jsp">
                 <div class="row row-10 row-horizontal-10">
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <label class="form-label" for="contact-email">E-postanız:</label>
+                      <input class="form-input" id="contact-first-name" type="text" name="first-name" data-constraints="@Required">
+                      <label class="form-label" for="contact-first-name">Adı Giriniz</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <input class="form-input" id="contact-last-name" type="text" name="last-name" data-constraints="@Required">
+                      <label class="form-label" for="contact-last-name">Soyadı Giriniz</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <label class="form-label" for="contact-email">E-posta Giriniz</label>
                       <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Required @Email">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-last-name" type="password" name="pass" data-constraints="@Required">
-                      <label class="form-label" for="contact-last-name">Şifreniz:</label>
+                      <label class="form-label" for="contact-phone">Telefon Numarası Giriniz</label>
+                      <input class="form-input" id="contact-phone" type="text" name="phone" data-constraints="@Required @PhoneNumber">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <label class="form-label" for="contact-pass">Şifre Giriniz</label>
+                      <input class="form-input" id="contact-pass" type="password" name="pass" data-constraints="@Required @Password">
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                    <div class="form-wrap">
+                      <label class="form-label" for="contact-pass1">Şifre Doğrulayınız</label>
+                      <input class="form-input" id="contact-pass1" type="password" name="pass1" data-constraints="@Required @Password">
                     </div>
                   </div>
                   <div class="col-12">
-                    <button class="button button-lg button-primary button-raven" type="submit">Giriş Yap</button>
-                    <a class="link-default" href="register.jsp">Hesabın yok mu?</a>
+                    <button class="button button-lg button-primary button-raven" type="submit">Kayıt Ol</button>
                   </div>
                 </div>
               </form>
@@ -131,3 +154,4 @@
     <script src="js/script.js"></script>
   </body>
 </html>
+
