@@ -1,14 +1,13 @@
 <%-- 
     Document   : register
-    Created on : 14 Ara 2022, 17:12:47
+    Created on : 16 Ara 2022, 23:38:03
     Author     : sedat
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="tr" charset="utf-8">
   <head>
-    <title>KayÄ±t Ol</title>
+    <title>Kayýt Ol</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +30,6 @@
       </div>
     </div>
     <div class="page">
-      <!-- Page Header--><a class="banner banner-top" href="https://www.templatemonster.com/website-templates/monstroid2.html" target="_blank"><img src="images/monstroid_02.jpg" alt="" height="0"/></a>
       <!-- Page Header-->
       <header class="page-header">
         <!-- RD Navbar-->
@@ -46,7 +44,7 @@
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">Servisler</a>
                     </li>
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="contacts.html">Ä°letÄ°ÅŸÄ°m</a>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" href="contacts.html">ÝletÝþÝm</a>
                     </li>
                   </ul>
                 </div>
@@ -79,48 +77,46 @@
         <div class="container">
           <div class="row row-50 justify-content-xl-between flex-lg-row-reverse">
           <div class="col-lg-8">
-              <h2>KayÄ±t Ol:</h2>
+              <h2>Kayýt Ol:</h2>
               <!-- RD Mailform-->
-              <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="register.jsp">
+              <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="regredirect.jsp">
                 <div class="row row-10 row-horizontal-10">
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-first-name" type="text" name="first-name" data-constraints="@Required">
-                      <label class="form-label" for="contact-first-name">AdÄ± Giriniz</label>
+                      <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
+                      <label class="form-label" for="contact-name">Ýsim:</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-last-name" type="text" name="last-name" data-constraints="@Required">
-                      <label class="form-label" for="contact-last-name">SoyadÄ± Giriniz</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-wrap">
-                      <label class="form-label" for="contact-email">E-posta Giriniz</label>
+                      <label class="form-label" for="contact-email">E-mail:</label>
                       <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Required @Email">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <label class="form-label" for="contact-phone">Telefon NumarasÄ± Giriniz</label>
-                      <input class="form-input" id="contact-phone" type="text" name="phone" data-constraints="@Required @PhoneNumber">
+                      <label class="form-label" for="contact-pass">Þifre:</label>
+                      <input class="form-input" id="contact-pass" type="password" name="pass" data-constraints="@Required @Password">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <label class="form-label" for="contact-pass">Åžifre Giriniz</label>
-                      <input class="form-input" id="contact-pass" type="password" name="pass" data-constraints="@Required @Password">
+                      <label class="form-label" for="contact-phone">Telefon Numarasý:</label>
+                      <input class="form-input" id="contact-phone" type="text" name="phone" data-constraints="@Required @PhoneNumber">
                     </div>
                   </div>
                     <div class="col-md-6">
                     <div class="form-wrap">
-                      <label class="form-label" for="contact-pass1">Åžifre DoÄŸrulayÄ±nÄ±z</label>
-                      <input class="form-input" id="contact-pass1" type="password" name="pass1" data-constraints="@Required @Password">
+                      <label class="form-label" for="contact-plate">Plaka: Sürücü deðilseniz boþ býrakýn!</label>
+                      <input placeholder="" class="form-input" id="contact-plate" type="text" name="plate" data-constraints="@Required">
                     </div>
                   </div>
-                  <div class="col-12">
-                    <button class="button button-lg button-primary button-raven" type="submit">KayÄ±t Ol</button>
+                    <div class="col-md-8">
+                       Normal: <input id="contact-type" type="radio" name="rb" value="user" data-constraints="@Required">
+                       Sürücü: <input id="contact-type" type="radio" name="rb" value="driver" data-constraints="@Required">    
+                    </div>
+                  <div class="col-22">
+                    <button class="button button-lg button-primary button-raven" type="submit">Kayýt Ol</button>
                   </div>
                 </div>
               </form>
@@ -140,7 +136,7 @@
           <div class="container">
             <div class="layout-2">
               <!-- Rights-->
-              <p class="rights"><span>Akasya &copy;&nbsp;</span><span class="copyright-year"></span>. TÃ¼m haklarÄ± saklÄ±dÄ±r.</p>
+              <p class="rights"><span>Akasya &copy;&nbsp;</span><span class="copyright-year"></span>. Tüm haklarý saklýdýr.</p>
               <div>
                 <div class="group group-middle"><a class="link-social-2 icon mdi mdi-facebook" href="#"></a><a class="link-social-2 icon mdi mdi-twitter" href="#"></a><a class="link-social-2 icon mdi mdi-google" href="#"></a><a class="link-social-2 icon mdi mdi-instagram" href="#"></a><a class="link-social-2 icon mdi mdi-linkedin" href="#"></a></div>
               </div>

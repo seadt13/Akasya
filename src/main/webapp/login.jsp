@@ -3,12 +3,12 @@
     Created on : 4 Ara 2022, 14:14:28
     Author     : sedat
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.mycompany.akasya.db"%>
+<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
-    <title>Contacts</title>
+    <title>Giriþ Yap</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +31,6 @@
       </div>
     </div>
     <div class="page">
-      <!-- Page Header--><a class="banner banner-top" href="https://www.templatemonster.com/website-templates/monstroid2.html" target="_blank"><img src="images/monstroid_02.jpg" alt="" height="0"/></a>
       <!-- Page Header-->
       <header class="page-header">
         <!-- RD Navbar-->
@@ -46,7 +45,7 @@
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">Servisler</a>
                     </li>
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="contacts.html">Ä°letÄ°ÅŸÄ°m</a>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" href="contacts.html">ÝletÝþÝm</a>
                     </li>
                   </ul>
                 </div>
@@ -79,26 +78,32 @@
         <div class="container">
           <div class="row row-50 justify-content-xl-between flex-lg-row-reverse">
           <div class="col-lg-8">
-              <h2>GiriÅŸ Yap</h2>
+              <h2>Giriþ Yap</h2>
               <!-- RD Mailform-->
-              <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="login.jsp">
+              <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="lredirect.jsp">
                 <div class="row row-10 row-horizontal-10">
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <label class="form-label" for="contact-email">E-postanÄ±z:</label>
-                      <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Required @Email">
+                      <label class="form-label" for="contact-email">E-posta:</label>
+                      <input class="form-input" id="contact-email" type="text" name="email" data-constraints="@Required @Email">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-last-name" type="password" name="pass" data-constraints="@Required">
-                      <label class="form-label" for="contact-last-name">Åžifreniz:</label>
+                      <input class="form-input" id="contact-last-name" type="password" name="pass" data-constraints="@Required @Password">
+                      <label class="form-label" for="contact-last-name">Þifre:</label>
                     </div>
                   </div>
-                  <div class="col-12">
-                    <button class="button button-lg button-primary button-raven" type="submit">GiriÅŸ Yap</button>
-                    <a class="link-default" href="register.jsp">HesabÄ±n yok mu?</a>
+                  <div class="col-md-8">
+                       Normal: <input id="contact-type" type="radio" name="rb" value="user" data-constraints="@Required">
+                       Sürücü: <input id="contact-type" type="radio" name="rb" value="driver" data-constraints="@Required">    
                   </div>
+                    <div class="col-22">
+                        <div class="col-22">
+                        <button class="button button-lg button-primary button-raven" type="submit">Giriþ Yap</button>
+                        </div>
+                        <a class="link-default col-22" href="register.jsp">Hesabýn yok mu?</a>
+                    </div>                     
                 </div>
               </form>
             </div>
@@ -117,7 +122,7 @@
           <div class="container">
             <div class="layout-2">
               <!-- Rights-->
-              <p class="rights"><span>Akasya &copy;&nbsp;</span><span class="copyright-year"></span>. TÃ¼m haklarÄ± saklÄ±dÄ±r.</p>
+              <p class="rights"><span>Akasya &copy;&nbsp;</span><span class="copyright-year"></span>. Tüm haklarý saklýdýr.</p>
               <div>
                 <div class="group group-middle"><a class="link-social-2 icon mdi mdi-facebook" href="#"></a><a class="link-social-2 icon mdi mdi-twitter" href="#"></a><a class="link-social-2 icon mdi mdi-google" href="#"></a><a class="link-social-2 icon mdi mdi-instagram" href="#"></a><a class="link-social-2 icon mdi mdi-linkedin" href="#"></a></div>
               </div>
