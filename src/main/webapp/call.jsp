@@ -7,11 +7,11 @@
 <%@page import="com.mycompany.akasya.*" %>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.sql.*"%>
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="tr">
   <head>
-    <title>Taksi Çaðýr - Akasya</title>
+    <title>Taksi ï¿½aï¿½ï¿½r - Akasya</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,25 +46,24 @@
                     <ul class="rd-navbar-nav">
                     <li class="rd-nav-item active"><a class="rd-nav-link" href="uindex.jsp">Anasayfa</a>
                     </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="displaycalls.jsp">Çaðrýlarýmý Gör</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="displaycalls.jsp">ï¿½aï¿½rï¿½larï¿½mï¿½ Gï¿½r</a>
                     </li>
                   </ul>
                   </ul>
                 </div>
                   <div class="rd-navbar-nav">
                       <p class="rd-nav-item" ><%
-       Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://app.sobiad.com:3306/grup2", "grup2", "grup2");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM `Users`  WHERE `Email` LIKE '"+session.getAttribute("email")+"'");     
-        while(rs.next())
-        {
-            String fullname=rs.getString("Name");
-            String[] arrName=fullname.split(" ");
-            out.println("Hoþgeldin "+arrName[0]);
-        }  
-        %></p>
+                          boolean isDriver=(boolean)session.getAttribute("isDriver");
+                    String name=(String)session.getAttribute("name");
+                    String email=(String)session.getAttribute("email");
+                    if(email==null || isDriver==true)
+                    {
+                         response.sendRedirect("login.jsp");
+                    }
+                    else{
+                         out.println("Hoï¿½geldin "+name);
+                     }  
+        %></p><a style="color: #cb2027; margin-left: 20px;" href="logout.jsp">ï¿½ï¿½kï¿½ï¿½ Yap</a>
                   </div>
               </div>
             </div>
@@ -95,13 +94,13 @@
         <div class="parallax-content">
             
           <div class="container">
-              <p class="heading-1 product-creative-title">Taksi Çaðýr</p> <br/>
+              <p class="heading-1 product-creative-title">Taksi ï¿½aï¿½ï¿½r</p> <br/>
               <div class="product-creative-main text-center">
               
              </div>
               <form action="callredirect.jsp" method="post">
                   <input class="form-input" id="autocomplete" type="text" name="location" data-constraints="@Required"> <br/>
-                <input class="button button-lg button-primary button-raven" type="submit" value="Çaðýr"/>
+                <input class="button button-lg button-primary button-raven" type="submit" value="ï¿½aï¿½ï¿½r"/>
               </form>
           </div>
         </div>
@@ -111,23 +110,23 @@
         <div class="footer-modern-main">
           <div class="container">
               <div class="col-lg-4">
-                <h4 class="font-weight-regular footer-modern-title">Bize ulaþýn</h4>
+                <h4 class="font-weight-regular footer-modern-title">Bize ulaï¿½ï¿½n</h4>
                 <!-- RD Mailform-->
                 <form class="rd-form form-sm rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
                   <div class="form-wrap">
                     <input class="form-input" id="contact-form-name-3" type="text" name="name" data-constraints="@Required">
-                    <label class="form-label" for="contact-form-name-3">Ýsminiz:</label>
+                    <label class="form-label" for="contact-form-name-3">ï¿½sminiz:</label>
                   </div>
                   <div class="form-wrap">
                     <input class="form-input" id="contact-form-email-3" type="email" name="email" data-constraints="@Email @Required">
-                    <label class="form-label" for="contact-form-email-3">E-postanýz:</label>
+                    <label class="form-label" for="contact-form-email-3">E-postanï¿½z:</label>
                   </div>
                   <div class="form-wrap">
-                    <label class="form-label" for="contact-form-message-3">Mesajýnýz:</label>
+                    <label class="form-label" for="contact-form-message-3">Mesajï¿½nï¿½z:</label>
                     <textarea class="form-input" id="contact-form-message-3" name="message" data-constraints="@Required"></textarea>
                   </div>
                   <div class="form-wrap">
-                    <button class="button button-primary button-raven" type="submit">Gönder</button>
+                    <button class="button button-primary button-raven" type="submit">Gï¿½nder</button>
                   </div>
                 </form>
               </div>
@@ -137,7 +136,7 @@
           <div class="container">
             <div class="layout-2">
               <!-- Rights-->
-              <p class="rights"><span>Akasya &copy;&nbsp;</span><span class="copyright-year"></span>. Tüm haklarý saklýdýr.</p>
+              <p class="rights"><span>Akasya &copy;&nbsp;</span><span class="copyright-year"></span>. Tï¿½m haklarï¿½ saklï¿½dï¿½r.</p>
               <div>
                 <div class="group group-middle"><a class="link-social-2 icon mdi mdi-facebook" href="#"></a><a class="link-social-2 icon mdi mdi-twitter" href="#"></a><a class="link-social-2 icon mdi mdi-google" href="#"></a><a class="link-social-2 icon mdi mdi-instagram" href="#"></a><a class="link-social-2 icon mdi mdi-linkedin" href="#"></a></div>
               </div>
@@ -173,7 +172,7 @@
           }
       }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiDC_Tlr8Y5XqhOjv-6wVHLDUQ6om_74c
+  <script src="https://maps.googleapis.com/maps/api/js?key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   &libraries=places&callback=initAutocomplete" async defer></script> 
   </body>
 </html>

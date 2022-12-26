@@ -6,7 +6,7 @@
 <%@page import="com.mycompany.akasya.Driver" %>
 <%@page import="com.mycompany.akasya.User" %>
 <%@page import="java.sql.*"%>
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,6 +15,8 @@
 </head>
 <body>
     <%
+        String status="true";
+        session.setAttribute("status",status);
         String email=request.getParameter("email");
         String pass=request.getParameter("pass");
         String type=request.getParameter("rb");
@@ -23,24 +25,27 @@
                 User us=new User();
                 if(us.CheckUser(email, pass)==true){
                     session.setAttribute("email", email);
-                    response.sendRedirect(request.getContextPath()+"/uindex.jsp");
+                    response.sendRedirect("uindex.jsp");
                 }
                 else{
-                    response.sendRedirect(request.getContextPath()+"/login.jsp");
+                    status="false";
+                    response.sendRedirect("loginerror.jsp");
                 }
             break;
             case "driver": 
                 Driver dr=new Driver();
                 if(dr.CheckUser(email, pass)==true){
                     session.setAttribute("email", email);
-                    response.sendRedirect(request.getContextPath()+"/dindex.jsp");
+                    response.sendRedirect("dindex.jsp");
                 }
                 else{
-                    response.sendRedirect(request.getContextPath()+"/login.jsp");
+                    status="false";
+                    response.sendRedirect("loginerror.jsp");
                 }
                 break;
             default:
-                response.sendRedirect(request.getContextPath()+"/login.jsp");
+                status="false";
+                response.sendRedirect("loginerror.jsp");
         }
     %>
 </body>

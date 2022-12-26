@@ -57,5 +57,19 @@ public class Calls {
             e.printStackTrace();
         }
     }
+    public void addDriver(String dname, int id) {
+        String sql = "UPDATE Calls SET DriversName='"+dname+"' WHERE ID="+id;
+        System.out.println("sql = " + sql);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://app.sobiad.com:3306/grup2?useUnicode=yes&characterEncoding=UTF-8", "grup2", "grup2");
+            Statement stmt = con.createStatement();
+            stmt.execute(sql);
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 

@@ -3,6 +3,9 @@
 /*
 * Trunk version 2.0.1
 */
+#hata{
+    color: #CC0000;
+}
 a:focus,
 button:focus {
 	outline: none !important;

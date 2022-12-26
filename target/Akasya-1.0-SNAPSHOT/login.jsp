@@ -3,10 +3,10 @@
     Created on : 4 Ara 2022, 14:14:28
     Author     : sedat
 --%>
-<%@page import="com.mycompany.akasya.db"%>
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@page import="com.mycompany.akasya.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="tr">
   <head>
     <title>Giriþ Yap</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
@@ -65,7 +65,7 @@
                   <button class="rd-navbar-collapse-toggle" data-rd-navbar-toggle=".rd-navbar-collapse-content"><span></span></button>
                   <div class="rd-navbar-collapse-content">
                     <div class="link-icon-title"><a class="link-icon-1" href="tel:#"><span class="icon mdi mdi-phone"></span><span>+90 (543) 911 84 36</span></a></div>
-                    <div><a class="link-icon-1" href="mailto:#"><span class="icon mdi mdi-email-outline"></span><span>akasya.contact@gmail.com</span></a></div>
+                    <div><a class="link-icon-1" href="mailto:akasya@gmail.com"><span class="icon mdi mdi-email-outline"></span><span>akasya.contact@gmail.com</span></a></div>
                   </div>
                 </div>
               </div>
@@ -83,25 +83,30 @@
               <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="lredirect.jsp">
                 <div class="row row-10 row-horizontal-10">
                   <div class="col-md-6">
-                    <div class="form-wrap">
+                      <br/>
+                     <div class="form-wrap">
                       <label class="form-label" for="contact-email">E-posta:</label>
                       <input class="form-input" id="contact-email" type="text" name="email" data-constraints="@Required @Email">
                     </div>
                   </div>
                   <div class="col-md-6">
+                      <br/>
                     <div class="form-wrap">
                       <input class="form-input" id="contact-last-name" type="password" name="pass" data-constraints="@Required @Password">
                       <label class="form-label" for="contact-last-name">Þifre:</label>
                     </div>
                   </div>
                   <div class="col-md-8">
+                      <br/>
                        Normal: <input id="contact-type" type="radio" name="rb" value="user" data-constraints="@Required">
                        Sürücü: <input id="contact-type" type="radio" name="rb" value="driver" data-constraints="@Required">    
                   </div>
                     <div class="col-22">
+                        <br/>
                         <div class="col-22">
                         <button class="button button-lg button-primary button-raven" type="submit">Giriþ Yap</button>
                         </div>
+                        <br/>
                         <a class="link-default col-22" href="register.jsp">Hesabýn yok mu?</a>
                     </div>                     
                 </div>

@@ -10,9 +10,9 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="com.mycompany.akasya.*" %>
 
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="tr">
   <head>
     <title>Anasayfa - Akasya</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
@@ -56,25 +56,19 @@
                   <div class="rd-navbar-nav">
                       <p class="rd-nav-item" >
                           <%
-                          String email=(String)session.getAttribute("email");
-                          if(email==null)
-                          {
-                               response.sendRedirect("login.jsp");
-                          }
-                          Class.forName("com.mysql.jdbc.Driver");
-                             Connection con = DriverManager.getConnection(
-                                     "jdbc:mysql://app.sobiad.com:3306/grup2", "grup2", "grup2");
-                             Statement stmt = con.createStatement();
-                             ResultSet rs = stmt.executeQuery("SELECT * FROM `Users`  WHERE `Email` LIKE '"+email+"'");     
-                         while(rs.next())
-                         {
-                            
-                             String fullname=rs.getString("Name");
-                             String[] arrName=fullname.split(" ");
-                             out.println("Hoþgeldin "+arrName[0]);
-                         }  
+                                boolean isDriver=(boolean)session.getAttribute("isDriver");
+                                String fullname=(String)session.getAttribute("fullname");
+                                String name=(String)session.getAttribute("name");
+                                if(name==null || isDriver==true)
+                                {
+                                     response.sendRedirect("login.jsp");
+                                }
+                                else
+                                {
+                                   out.println("Hoþgeldin "+name);
+                                }
                          %>
-                      </p>
+                      </p><a style="color: #cb2027; margin-left: 20px;" href="logout.jsp">Çýkýþ Yap</a>
                   </div>
               </div>
             </div>
@@ -105,7 +99,6 @@
         <div class="parallax-content">
           <div class="container text-center">
                             <%
-                       String name=(String)session.getAttribute("name");
                        if(name==null)
                        {
                            response.sendRedirect("login.jsp");
@@ -113,13 +106,14 @@
                        Class.forName("com.mysql.jdbc.Driver");
                        Connection con1 = DriverManager.getConnection(
                                "jdbc:mysql://app.sobiad.com:3306/grup2?useUnicode=yes&characterEncoding=UTF-8", "grup2", "grup2");
-                       Statement stmt1 = con.createStatement();
-                       ResultSet rs1 = stmt1.executeQuery("SELECT * FROM `Calls` WHERE `ClientsName` LIKE '"+name+"'");    
+                       Statement stmt1 = con1.createStatement();
+                       ResultSet rs1 = stmt1.executeQuery("SELECT * FROM `Calls` WHERE `ClientsName` LIKE '"+fullname+"'");    
                        %>
                        <table border=1 align=center style="text-align:center">
                      <tr>
                         <th>ID</th>
                         <th>Müþteri Adý</th>
+                        <th>Sürücü Adý</th>
                         <th>Konum</th>
                         <th>Tarih ve Saati</th>
                      </tr>
@@ -129,6 +123,7 @@
                        <tr>
                            <td><%=rs1.getInt("ID") %></td>
                            <td><%=rs1.getString("ClientsName") %></td>
+                           <td><%=rs1.getString("DriversName") %></td>
                            <td><%=rs1.getString("Location") %></td>
                            <td><%=rs1.getString("Datetime") %></td>
                        </tr>

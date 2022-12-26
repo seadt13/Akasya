@@ -5,9 +5,9 @@
 --%>
 <%@page import="com.mycompany.akasya.*" %>
 <%@page import="java.sql.*"%>
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="tr">
   <head>
     <title>Anasayfa - Akasya</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
@@ -48,25 +48,19 @@
                   <div class="rd-navbar-nav">
                       <p class="rd-nav-item" >
                           <%
+                              boolean isUser=(boolean)session.getAttribute("isUser");
+                              String name=(String)session.getAttribute("name");
+                              session.setAttribute("driversName",name);
                           String email=(String)session.getAttribute("email");
-                          if(email==null)
+                          if(name==null || isUser==true)
                           {
                                response.sendRedirect("login.jsp");
                           }
-                        Class.forName("com.mysql.jdbc.Driver");
-                             Connection con = DriverManager.getConnection(
-                                     "jdbc:mysql://app.sobiad.com:3306/grup2", "grup2", "grup2");
-                             Statement stmt = con.createStatement();
-                             ResultSet rs = stmt.executeQuery("SELECT * FROM `Drivers`  WHERE `Email` LIKE '"+email+"'");     
-                         while(rs.next())
-                         {
-                            
-                             String fullname=rs.getString("Name");
-                             String[] arrName=fullname.split(" ");
-                             out.println("Hoþgeldin "+arrName[0]);
+                          else{
+                             out.println("Hoþgeldin "+name);
                          }  
                          %>
-                      </p>
+                      </p><a style="color: #cb2027; margin-left: 20px;" href="logout.jsp">Çýkýþ Yap</a>
                   </div>
               </div>
             </div>
@@ -97,7 +91,8 @@
         <div class="parallax-content">
           <div class="container">
             <div class="product-creative-main text-center">
-                 <%
+                 <%             
+                              email=(String)session.getAttribute("email");
                               if(email==null){
                                   response.sendRedirect("login.jsp");
                               } 
@@ -111,6 +106,7 @@
                             <tr>
                                <th>ID</th>
                                <th>Müþteri Adý</th>
+                               <th>Sürücü Adý</th>
                                <th>Konum</th>
                                <th>Tarih ve Saati</th>
                             </tr>
@@ -120,14 +116,29 @@
                               <tr>
                                   <td><%=rs1.getInt("ID") %></td>
                                   <td><%=rs1.getString("ClientsName") %></td>
+                                   <td><%=rs1.getString("DriversName") %></td>
                                   <td><%=rs1.getString("Location") %></td>
                                   <td><%=rs1.getString("Datetime") %></td>
                               </tr>
                               <%}%>
-                          </table><br>    
+                          </table><br> 
+               <form method="post" action="takencallsredirect.jsp">
+                <div class="row row-10 row-horizontal-10">
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <input class="form-input" id="contact-callid" type="text" name="callid" data-constraints="@Required">
+                      <label class="form-label" for="contact-callid">Almak Ýstediðiniz Çaðrýnýn ID'sini giriniz</label>
+                    </div>
+                  </div>
+                    <div class="col-22">
+                        <button class="button button-lg button-primary button-raven" type="submit">Çaðrýyý Al</button>                        
+                    </div>                     
+                </div>
+            </form>
             </div>
           </div>
         </div>
+            
       </section>
       <!-- Page Footer--><img src="images/footer.jpg" alt=""/>
       <footer class="section footer-modern bg-gray-950">

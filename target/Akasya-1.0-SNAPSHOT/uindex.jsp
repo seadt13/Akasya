@@ -7,9 +7,9 @@
 <%@page import="com.mycompany.akasya.*" %>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.sql.*"%>
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="tr">
   <head>
     <title>Anasayfa - Akasya</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
@@ -54,6 +54,10 @@
                   <div class="rd-navbar-nav">
                       <p class="rd-nav-item" >
                           <%
+                            boolean isDriver=false;
+                            boolean isUser=true;
+                            session.setAttribute("isUser",isUser);
+                            session.setAttribute("isDriver",isDriver);
                             String email=(String)session.getAttribute("email");
                             session.setAttribute("email",email);
                             if(email==null)
@@ -68,11 +72,12 @@
                              while(rs.next())
                              {
                                  String fullname=rs.getString("Name");
+                                 session.setAttribute("fullname",fullname);
                                  String[] arrName=fullname.split(" ");
+                                 session.setAttribute("name",arrName[0]);
                                  out.println("Hoşgeldin "+arrName[0]);
                              }  
-                             %></p><br/>
-                      <a href="logout.jsp">Çıkış Yap</a>
+                             %></p><a style="color: #cb2027; margin-left: 20px;" href="logout.jsp">Çıkış Yap</a>
                   </div>
               </div>
             </div>

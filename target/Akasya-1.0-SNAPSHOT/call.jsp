@@ -7,9 +7,9 @@
 <%@page import="com.mycompany.akasya.*" %>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.sql.*"%>
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="tr">
   <head>
     <title>Taksi Çaðýr - Akasya</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
@@ -53,18 +53,17 @@
                 </div>
                   <div class="rd-navbar-nav">
                       <p class="rd-nav-item" ><%
-       Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://app.sobiad.com:3306/grup2", "grup2", "grup2");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM `Users`  WHERE `Email` LIKE '"+session.getAttribute("email")+"'");     
-        while(rs.next())
-        {
-            String fullname=rs.getString("Name");
-            String[] arrName=fullname.split(" ");
-            out.println("Hoþgeldin "+arrName[0]);
-        }  
-        %></p>
+                          boolean isDriver=(boolean)session.getAttribute("isDriver");
+                    String name=(String)session.getAttribute("name");
+                    String email=(String)session.getAttribute("email");
+                    if(email==null || isDriver==true)
+                    {
+                         response.sendRedirect("login.jsp");
+                    }
+                    else{
+                         out.println("Hoþgeldin "+name);
+                     }  
+        %></p><a style="color: #cb2027; margin-left: 20px;" href="logout.jsp">Çýkýþ Yap</a>
                   </div>
               </div>
             </div>

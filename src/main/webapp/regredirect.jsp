@@ -5,7 +5,7 @@
 --%>
 <%@page import="com.mycompany.akasya.Driver" %>
 <%@page import="com.mycompany.akasya.User" %>
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +19,13 @@
         String email=request.getParameter("email");
         String pass=request.getParameter("pass");
         String phone=request.getParameter("phone");
-        switch(type){   
+        if(email==null || pass==null|| type==null ||name==null || phone==null)
+        {
+            response.sendRedirect(request.getContextPath()+"/regerror.jsp");
+        }
+        else
+        {
+         switch(type){   
             case "user": 
                 User us=new User();
                 us.setName(name);
@@ -34,11 +40,15 @@
                 else
                 {
                     out.println("Kayýt iþleminde hata gerçekleþti!!!");
-                    response.sendRedirect(request.getContextPath()+"/register.jsp");
+                    response.sendRedirect(request.getContextPath()+"/regerror.jsp");
                 }
             break;
             case "driver":
                 String plate=request.getParameter("plate");
+                if(plate==null)
+                {
+                    response.sendRedirect(request.getContextPath()+"/regerror.jsp");
+                }
                 Driver dr=new Driver();
                 dr.setName(name);
                 dr.setEmail(email);
@@ -53,12 +63,14 @@
                 else
                 {
                     out.println("Kayýt iþleminde hata gerçekleþti!!!");
-                    response.sendRedirect(request.getContextPath()+"/register.jsp");
+                    response.sendRedirect(request.getContextPath()+"/regerror.jsp");
                 }
                 break;
             default:
                 response.sendRedirect(request.getContextPath()+"/login.jsp");
         }
+        }
+       
     %>
 </body>
 </html>

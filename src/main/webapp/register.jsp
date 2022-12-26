@@ -3,14 +3,13 @@
     Created on : 16 Ara 2022, 23:38:03
     Author     : sedat
 --%>
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="tr" charset="utf-8">
+<html>
   <head>
     <title>Kayıt Ol</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-9"/>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Work+Sans:300,400,500,700%7CZilla+Slab:300,400,500,700,700i%7CGloria+Hallelujah">
     <link rel="stylesheet" href="css/bootstrap.css">

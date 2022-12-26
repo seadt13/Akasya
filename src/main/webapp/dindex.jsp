@@ -7,9 +7,9 @@
 <%@page import="com.mycompany.akasya.*" %>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.sql.*"%>
-<%@page contentType="text/html;charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-9" pageEncoding="ISO-8859-9"%>
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="tr">
   <head>
     <title>Anasayfa - Akasya</title>
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
@@ -51,8 +51,12 @@
                 </div>
                   <div class="rd-navbar-nav">
                       <p class="rd-nav-item" ><%
+                          boolean isUser=false;
+                          boolean isDriver=true;
+                          session.setAttribute("isDriver",isDriver);
+                          session.setAttribute("isUser",isUser);
                           String email=(String)session.getAttribute("email");
-                          if(email==null)
+                          if(email==null || isDriver==false)
                           {
                                response.sendRedirect("login.jsp");
                           }
@@ -63,13 +67,12 @@
                              ResultSet rs = stmt.executeQuery("SELECT * FROM `Drivers`  WHERE `Email` LIKE '"+email+"'");     
                          while(rs.next())
                          {
-                            
                              String fullname=rs.getString("Name");
                              String[] arrName=fullname.split(" ");
+                             session.setAttribute("name",arrName[0]);
                              out.println("Hoşgeldin "+arrName[0]);
                          }  
-                         %></p>
-                  </div>
+                  %></p><a style="color: #cb2027; margin-left: 20px;" href="logout.jsp">Çıkış Yap</a></div>
               </div>
             </div>
             <div class="rd-navbar-aside-outer">
